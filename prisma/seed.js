@@ -100,16 +100,17 @@ async function main() {
   const network = [
     {
       name: networkNames[Math.floor(Math.random() * networkNames.length)],
-      connect: {
-        id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+      users: {
+        connect: {
+          id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+        },
       },
     },
   ];
 
   const createdNetwork = await Promise.all(
-    network.map((network) => prisma.network.create({data: network}))
+    network.map((network) => prisma.network.create({ data: network }))
   );
-
 }
 
 main()
