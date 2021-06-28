@@ -3,7 +3,7 @@ const faker = require("faker");
 
 const prisma = new PrismaClient();
 
-async function seed() {
+async function main() {
   const users = [
     {
       pseudo: faker.internet.userName(),
@@ -37,20 +37,22 @@ async function seed() {
 
   const attachments = [
     {
-      url: faker.image.url(),
+      url: faker.image.imageUrl(),
       user: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
         },
       },
+      type: "PHOTO",
     },
     {
-      url: faker.image.url(),
+      url: faker.image.imageUrl(),
       user: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
         },
       },
+      type: "VIDEO",
     },
   ];
 
@@ -59,8 +61,30 @@ async function seed() {
       prisma.attachment.create({ data: attachment })
     )
   );
+  const tag = [
+    {
+      name: faker.lorem.word(1),
+      users: {
+        connect: {
+          id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+        },
+      },
+    },
+    {
+      name: faker.lorem.word(1),
+      users: {
+        connect: {
+          id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+        },
+      },
+    },
+  ];
+
+  const createdTag = await Promise.all(
+    tag.map((tag) => prisma.tag.create({ data: tag }))
+  );
 }
 
-module.exports = {
-  seed,
-};
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());
