@@ -2,16 +2,19 @@ const { attachment } = require("../../../prismaClient");
 const prisma = require("../../../prismaClient");
 
 module.exports = async (req, res, next) => {
-  const { pseudo, email, status, city, tags, attachments } = req.body;
+  const { pseudo, email, password, status, city, tags, attachments, job } =
+    req.body;
 
   console.log(attachments);
   try {
     const users = await prisma.user.create({
       data: {
         pseudo,
+        password,
         email,
         status,
         city,
+        job,
         tags: {
           connect: tags.map((tag) => ({ id: tag })),
         },
