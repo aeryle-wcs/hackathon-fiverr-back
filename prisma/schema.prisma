@@ -9,3 +9,71 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model User {
+  id               String       @id @default(uuid())
+  pseudo           String
+  password         String
+  email            String
+  status           Status
+  city             String
+  job              String
+  tags             Tag[]
+  attachments      Attachment[]
+  networks         Network[]
+  messagesSent     Message[]    @relation("sender")
+  messagesReceived Message[]    @relation("recipient")
+}
+
+enum Status {
+  ONLINE
+  OFFLINE
+  BUSY
+}
+
+model Attachment {
+  id     String         @id @default(uuid())
+  url    String
+  type   TypeAttachment
+  user   User           @relation(fields: [userId], references: [id])
+  userId String
+}
+
+enum TypeAttachment {
+  PHOTO
+  VIDEO
+}
+
+model Network {
+  id    String      @id @default(uuid())
+  name  NetworkName
+  users User[]
+}
+
+enum NetworkName {
+  INSTAGRAM
+  TWITTER
+  FACEBOOK
+  REDDIT
+  BEHANCE
+  DEVTO
+  YOUTUBE
+  PORTFOLIO
+  DRIBBLE
+  GITHUB
+}
+
+model Tag {
+  id    String @id @default(uuid())
+  name  String
+  users User[]
+}
+
+model Message {
+  id          String  @id @default(uuid())
+  read        Boolean @default(false)
+  sender      User    @relation(name: "sender", fields: [senderId], references: [id])
+  senderId    String
+  recipient   User    @relation(name: "recipient", fields: [recipientId], references: [id])
+  recipientId String
+}
