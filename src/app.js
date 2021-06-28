@@ -20,7 +20,6 @@ app.get("/", (req, res) => {
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄hello world",
   });
 });
-
 app.use("/api/v1", api);
 
 app.use(middlewares.notFound);
