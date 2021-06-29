@@ -12,9 +12,9 @@ generator client {
 
 model User {
   id               String       @id @default(uuid())
-  pseudo           String       @unique
-  password         String       @unique
-  email            String
+  pseudo           String
+  password         String
+  email            String       @unique
   status           Status
   city             String
   job              String
