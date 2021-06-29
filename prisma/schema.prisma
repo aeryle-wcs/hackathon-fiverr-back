@@ -12,8 +12,8 @@ generator client {
 
 model User {
   id               String       @id @default(uuid())
-  pseudo           String
-  password         String
+  pseudo           String       @unique
+  password         String       @unique
   email            String
   status           Status
   city             String
