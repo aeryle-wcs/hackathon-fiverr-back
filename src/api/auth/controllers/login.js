@@ -16,7 +16,8 @@ module.exports = async (req, res, next) => {
         email: true,
         status: true,
         city: true,
-        job: true
+        job: true,
+        description: true,
       }
     });
 

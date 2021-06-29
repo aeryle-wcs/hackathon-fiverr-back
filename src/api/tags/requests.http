@@ -1,0 +1,4 @@
+GET http://localhost:5000/api/v1/tags
+
+###
+GET http://localhost:5000/api/v1/tags/08015a48-c06c-40f5-ba21-99b292956102

@@ -1,9 +1,22 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, NetworkName } = require("@prisma/client");
 const faker = require("faker");
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const networkNames = [
+    "INSTAGRAM",
+    "TWITTER",
+    "FACEBOOK",
+    "REDDIT",
+    "BEHANCE",
+    "DEVTO",
+    "YOUTUBE",
+    "PORTFOLIO",
+    "DRIBBLE",
+    "GITHUB",
+  ];
+
   const users = [
     {
       pseudo: faker.internet.userName(),
@@ -12,6 +25,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "OFFLINE",
+      description: faker.company.catchPhraseDescriptor(),
     },
     {
       pseudo: faker.internet.userName(),
@@ -20,6 +34,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "ONLINE",
+      description: faker.company.catchPhraseDescriptor(),
     },
     {
       pseudo: faker.internet.userName(),
@@ -28,6 +43,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "BUSY",
+      description: faker.company.catchPhraseDescriptor(),
     },
   ];
 
@@ -63,7 +79,7 @@ async function main() {
   );
   const tag = [
     {
-      name: faker.lorem.word(1),
+      name: faker.lorem.slug(),
       users: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
@@ -71,7 +87,7 @@ async function main() {
       },
     },
     {
-      name: faker.lorem.word(1),
+      name: faker.lorem.slug(),
       users: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
@@ -82,6 +98,21 @@ async function main() {
 
   const createdTag = await Promise.all(
     tag.map((tag) => prisma.tag.create({ data: tag }))
+  );
+
+  const network = [
+    {
+      name: networkNames[Math.floor(Math.random() * networkNames.length)],
+      users: {
+        connect: {
+          id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+        },
+      },
+    },
+  ];
+
+  const createdNetwork = await Promise.all(
+    network.map((network) => prisma.network.create({ data: network }))
   );
 }
 

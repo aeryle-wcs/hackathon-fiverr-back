@@ -1,0 +1,18 @@
+GET http://localhost:5000/api/v1/attachments
+
+###
+GET http://localhost:5000/api/v1/attachments/72806006-32b8-4f81-9baa-87a9e07dc129
+
+###
+POST http://localhost:5000/api/v1/attachments
+Content-Type: application/json
+
+{
+    "url":"https://images.unsplash.com/photo-1608697005000-2be78a1f1023?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80",
+    "type":"PHOTO",
+    "userId":"f0fc526c-7861-44bb-9448-84ce9f5fcf28"
+
+}
+
+###
+DELETE http://localhost:5000/api/v1/attachments/17fa1c6d-47f9-4c98-85bc-f21371ab90fe
