@@ -16,7 +16,6 @@ Content-Type: application/json
     "city": "BIARRITZ",
     "description":"je travaille d'arrache pieds",
     "job": "Happiness chief officer",
-    "tags": ["08015a48-c06c-40f5-ba21-99b292956102"], 
+    "tags": ["08015a48-c06c-40f5-ba21-99b292956102"],
     "attachments": ["62021f53-3bf4-41f2-8225-2e09577dcefd"]
 }
-

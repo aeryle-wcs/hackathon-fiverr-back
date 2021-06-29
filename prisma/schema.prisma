@@ -14,7 +14,7 @@ model User {
   id               String       @id @default(uuid())
   pseudo           String
   password         String
-  email            String
+  email            String       @unique
   status           Status
   city             String
   job              String
