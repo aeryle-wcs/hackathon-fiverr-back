@@ -14,8 +14,6 @@ Content-Type: application/json
     "email": "babs@gmail.com",
     "status": "OFFLINE",
     "city": "BIARRITZ",
-    "job": "Happiness chief officer",
-    "tags": ["08015a48-c06c-40f5-ba21-99b292956102"], 
-    "attachments": ["62021f53-3bf4-41f2-8225-2e09577dcefd"]
+    "job": "Happiness chief officer"
 }
 

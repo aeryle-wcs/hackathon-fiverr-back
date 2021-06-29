@@ -16,12 +16,10 @@ module.exports = async (req, res, next) => {
         city,
         job,
         tags: {
-          connect: (tags || []).map((tag) => ({ id: tag })),
+          connect: tags.map((tag) => ({ id: tag })),
         },
         attachments: {
-          connect: (attachments || []).map((attachment) => ({
-            id: attachment,
-          })),
+          connect: attachments.map((attachment) => ({ id: attachment })),
         },
       },
     });
