@@ -18,6 +18,7 @@ model User {
   status           Status
   city             String
   job              String
+  description      String
   tags             Tag[]
   attachments      Attachment[]
   networks         Network[]

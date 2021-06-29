@@ -25,6 +25,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "OFFLINE",
+      description: faker.company.catchPhraseDescriptor(),
     },
     {
       pseudo: faker.internet.userName(),
@@ -33,6 +34,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "ONLINE",
+      description: faker.company.catchPhraseDescriptor(),
     },
     {
       pseudo: faker.internet.userName(),
@@ -41,6 +43,7 @@ async function main() {
       city: faker.address.city(),
       job: faker.name.jobTitle(),
       status: "BUSY",
+      description: faker.company.catchPhraseDescriptor(),
     },
   ];
 
@@ -76,7 +79,7 @@ async function main() {
   );
   const tag = [
     {
-      name: faker.lorem.word(1),
+      name: faker.lorem.slug(),
       users: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
@@ -84,7 +87,7 @@ async function main() {
       },
     },
     {
-      name: faker.lorem.word(1),
+      name: faker.lorem.slug(),
       users: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
