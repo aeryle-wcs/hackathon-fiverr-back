@@ -5,7 +5,6 @@ module.exports = async (req, res, next) => {
   const { pseudo, email, password, status, city, tags, attachments, job } =
     req.body;
 
-  console.log(attachments);
   try {
     const users = await prisma.user.create({
       data: {
