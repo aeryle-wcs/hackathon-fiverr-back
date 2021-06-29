@@ -2,8 +2,17 @@ const { attachment } = require("../../../prismaClient");
 const prisma = require("../../../prismaClient");
 
 module.exports = async (req, res, next) => {
-  const { pseudo, email, password, status, city, tags, attachments, job } =
-    req.body;
+  const {
+    pseudo,
+    email,
+    password,
+    status,
+    city,
+    tags,
+    attachments,
+    job,
+    description,
+  } = req.body;
 
   console.log(attachments);
   try {
@@ -13,6 +22,7 @@ module.exports = async (req, res, next) => {
         password,
         email,
         status,
+        description,
         city,
         job,
         tags: {
