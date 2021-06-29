@@ -1,0 +1,22 @@
+GET http://localhost:5000/api/v1/users
+
+###
+GET http://localhost:5000/api/v1/users/f0fc526c-7861-44bb-9448-84ce9f5fcf28
+Content-Type: application/json
+
+###
+POST http://localhost:5000/api/v1/users
+Content-Type: application/json
+
+{
+    "pseudo": "Babyrty12",
+    "password": "wWeHN6wmPEYpzBDL",
+    "email": "babs@gmail.com",
+    "status": "OFFLINE",
+    "city": "BIARRITZ",
+    "description":"je travaille d'arrache pieds",
+    "job": "Happiness chief officer",
+    "tags": ["08015a48-c06c-40f5-ba21-99b292956102"], 
+    "attachments": ["62021f53-3bf4-41f2-8225-2e09577dcefd"]
+}
+
