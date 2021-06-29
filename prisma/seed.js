@@ -1,9 +1,22 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient, NetworkName } = require("@prisma/client");
 const faker = require("faker");
 
 const prisma = new PrismaClient();
 
 async function main() {
+  const networkNames = [
+    "INSTAGRAM",
+    "TWITTER",
+    "FACEBOOK",
+    "REDDIT",
+    "BEHANCE",
+    "DEVTO",
+    "YOUTUBE",
+    "PORTFOLIO",
+    "DRIBBLE",
+    "GITHUB",
+  ];
+
   const users = [
     {
       pseudo: faker.internet.userName(),
@@ -82,6 +95,21 @@ async function main() {
 
   const createdTag = await Promise.all(
     tag.map((tag) => prisma.tag.create({ data: tag }))
+  );
+
+  const network = [
+    {
+      name: networkNames[Math.floor(Math.random() * networkNames.length)],
+      users: {
+        connect: {
+          id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
+        },
+      },
+    },
+  ];
+
+  const createdNetwork = await Promise.all(
+    network.map((network) => prisma.network.create({ data: network }))
   );
 }
 
