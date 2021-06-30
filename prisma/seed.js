@@ -53,7 +53,7 @@ async function main() {
 
   const attachments = [
     {
-      url: faker.image.imageUrl(),
+      url: faker.image.business(),
       user: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,
@@ -62,7 +62,7 @@ async function main() {
       type: "PHOTO",
     },
     {
-      url: faker.image.imageUrl(),
+      url: faker.image.transport(),
       user: {
         connect: {
           id: createdUsers[Math.floor(Math.random() * createdUsers.length)].id,

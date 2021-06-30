@@ -16,3 +16,6 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5000/api/v1/attachments/17fa1c6d-47f9-4c98-85bc-f21371ab90fe
+
+###
+GET http://localhost:5000/api/v1/attachments/10d5f7e1-031a-4f4c-962a-af2c9b70993d/1d7c1f1a-6707-4efc-aa34-6e1e9170f4c5
